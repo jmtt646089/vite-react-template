@@ -56,7 +56,63 @@ function App() {
 				>
 					Name from API is: {name}
 				</button>
-				<Button> This is a Button from Ant Design.</Button>
+				<br></br>
+				<Button
+					onClick={() => {
+						fetch("/products/")
+							.then((res) => res.json() as Promise<{ name: string }>)
+							.then((data) => setName(data.name));
+					}}
+				> 
+					Button for :{name}.
+				</Button>
+				
+				<br></br>
+				<Button
+					onClick={() => {
+						fetch("/productspec/")
+							.then((res) => res.json() as Promise<{ name: string }>)
+							.then((data) => setName(data.name));
+					}}
+				> 
+					Button for :{name}.
+				</Button>
+				
+				<br></br>
+				<Button
+					onClick={() => {
+						fetch("/cart/")
+							.then((res) => res.json() as Promise<{ name: string }>)
+							.then((data) => setName(data.name));
+					}}
+				> 
+					Button for :{name}.
+				</Button>
+				
+				<br></br>
+				<Button
+					onClick={() => {
+						fetch("/order/")
+							.then((res) => res.json() as Promise<{ name: string }>)
+							.then((data) => setName(data.name));
+					}}
+				> 
+					Button for :{name}.
+				</Button>
+
+				
+				<br></br>
+				<Button
+					onClick={() => {
+						fetch("/account/")
+							.then((res) => res.json() as Promise<{ name: string }>)
+							.then((data) => setName(data.name));
+					}}
+				> 
+					Button for :{name}.
+				</Button>
+				
+				<br></br>
 				<DatePicker></DatePicker>
 				<p>
 					Edit <code>worker/index.ts</code> to change the name
