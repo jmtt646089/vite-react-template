@@ -57,7 +57,7 @@ function App() {
 					Name from API is: {name}
 				</button>
 				<Button> This is a Button from Ant Design.</Button>
-				<Datepicker></Datepicker>
+				<DatePicker></DatePicker>
 				<p>
 					Edit <code>worker/index.ts</code> to change the name
 				</p>
