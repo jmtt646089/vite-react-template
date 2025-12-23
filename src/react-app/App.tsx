@@ -6,6 +6,7 @@ import viteLogo from "/vite.svg";
 import cloudflareLogo from "./assets/Cloudflare_Logo.svg";
 import honoLogo from "./assets/hono.svg";
 import "./App.css";
+import { Button, Space, DatePicker, version } from 'antd';
 
 function App() {
 	const [count, setCount] = useState(0);
@@ -55,6 +56,7 @@ function App() {
 				>
 					Name from API is: {name}
 				</button>
+				<Button> This is a Button from Ant Design.</Button>
 				<p>
 					Edit <code>worker/index.ts</code> to change the name
 				</p>
