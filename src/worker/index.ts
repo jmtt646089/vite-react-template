@@ -1,5 +1,9 @@
 import { Hono } from "hono";
+import { logger } from 'hono/logger';
+
 const app = new Hono<{ Bindings: Env }>();
+
+app.use(logger());
 
 app.get("/api/", (c) => c.json({ name: "React-Ant Design-Vite-Honoooooooooooooo-CF-JMTT" }));
 app.get("/products/", (c) => c.json({ name: "Products" }));
