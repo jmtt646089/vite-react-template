@@ -46,7 +46,7 @@
 		"dev": "vite",
 		"lint": "eslint .",
 		"preview": "npm run build && vite preview",
-		"css": "npx tailwindcss -i ./src/react-app/index.css -o /src/style.css --watch"
+		"css": "npx @tailwindcss/cli -i ./src/react-app/index.css -o /src/style.css --watch"
 	},
 	"type": "module"
 }
