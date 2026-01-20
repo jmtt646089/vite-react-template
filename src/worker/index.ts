@@ -27,19 +27,15 @@ const supabase = createClient(projectUrl, publishableKey);
 console.log("supabase client created");
 
 console.log("query users table -----------------------------------");
-const { data, error } = await supabase
-  .from('users')
-  .select('id, fname, lname, email');
+await supabase.from('users').select('id, fname, lname, email');
 
 console.log("insert users table -----------------------------------");
-const { data, error } = await supabase
-  .from('users')
-  .insert([
+await supabase.from('users').insert([
     { fname: 'littlewhite', lname: 'cat' },
   ]);
 
 console.log("update users table -----------------------------------");
-const { error } = await supabase
+await supabase
   .from('users')
   .update({ fname: 'j10noodles' })
   .eq('id', 1);
