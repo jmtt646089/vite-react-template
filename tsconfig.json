@@ -5,4 +5,9 @@
 		{ "path": "./tsconfig.node.json" },
 		{ "path": "./tsconfig.worker.json" }
 	]
+
+	"compilerOptions": {
+    // ... other options
+    "types": ["@cloudflare/workers-types", "worker-configuration"]
+  }
 }
