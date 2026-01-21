@@ -54,7 +54,7 @@ app.get("/productspec/", (c) => c.json({ name: "Product Details by ID" }));
 app.get("/cart/", (c) => c.json({ name: "Shopping Cart" }));
 app.get("/order/", (c) => c.json({ name: "Order" }));
 app.get("/account/", (c) => c.json({ name: "Account" }));
-app.get("/users/", (c) => user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
+app.get("/users/", (c) => user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY));
 
 
 export default app;
