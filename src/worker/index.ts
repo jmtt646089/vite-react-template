@@ -12,8 +12,13 @@ function user_ops(url:string,key:string) {
   //console.log(supabase);
   
   console.log("query users table -----------------------------------");
-  const {data} = supabase.from('users').select('id, fname, lname, email');
-  console.log(data);
+  const {data, error} = supabase.from('users').select('id, fname, lname, email');
+  if (error) {
+    console.error(error);
+  } else {
+    console.log(data); // 'data' is now available and properly typed
+  }
+
   
   //console.log("insert users table -----------------------------------");
   //supabase.from('users').insert([
