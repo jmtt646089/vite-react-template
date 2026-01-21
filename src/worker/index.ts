@@ -39,13 +39,14 @@ async function user_ops(url:string,key:string) {
 }
 */
 
+/*
 async function neonVer(db:string){
   const sql = neon(db!);
   const [result] = await sql`SELECT version()`;
   console.log("The version of postgresql:");
   console.log(result.version);
 }
-
+*/
 
 type Environ = {
   PROJECT_URL: string;
@@ -64,7 +65,7 @@ app.get("/productspec/", (c) => c.json({ name: "Product Details by ID" }));
 app.get("/cart/", (c) => c.json({ name: "Shopping Cart" }));
 app.get("/order/", (c) => c.json({ name: "Order" }));
 app.get("/account/", (c) => c.json({ name: "Account" }));
-app.get("/users/", (c) => {
+app.get("/users/", async (c) => {
   //user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
   //return  c.text("query users run ------------- finished ");
   //neonVer(c.env.NEON_DB);
