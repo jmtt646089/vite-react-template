@@ -38,10 +38,9 @@ supabase
 //}
 
 //but I think to try this first because the interface after new Hono
-interface Env{
+type Env = {
   PUBLIC_URL: string;
   PUBLILSHABLE_KEY: string;
-  
 }
 
 
