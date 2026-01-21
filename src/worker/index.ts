@@ -1,8 +1,10 @@
 import { Hono } from "hono";
 import { logger } from 'hono/logger';
-import { createClient } from '@supabase/supabase-js';
+//import { createClient } from '@supabase/supabase-js';
+import { neon } from '@neondatabase/serverless';
 
 
+/*
 async function user_ops(url:string,key:string) {
   
   const supabase = createClient(url, key);
@@ -35,11 +37,19 @@ async function user_ops(url:string,key:string) {
   console.log("nnnnnnnnd after update ");
 
 }
+*/
+
+async function neonVer(db:string){
+  const sql = neon(db!);
+  const [result] = await sql`SELECT version()`;
+  console.log(result.version);
+}
 
 
 type Environ = {
   PROJECT_URL: string;
   PUBLISHABLE_KEY: string;
+  NEON_DB: string;
 }
 
 const app = new Hono<{ Bindings: Environ}>();
@@ -54,11 +64,11 @@ app.get("/cart/", (c) => c.json({ name: "Shopping Cart" }));
 app.get("/order/", (c) => c.json({ name: "Order" }));
 app.get("/account/", (c) => c.json({ name: "Account" }));
 app.get("/users/", (c) => {
-                              user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
-                              //return  c.text("query users run ---------------- finished ");
-                              return c.json({ name: "supabase table - users - Updated" });
-                          }
-       );
+  //user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
+  //return  c.text("query users run ---------------- finished ");
+  neonVer(c.env.NEON_DB);
+  return c.json({ name: "supabase table - users - Updated" });
+  });
 
 
 export default app;
