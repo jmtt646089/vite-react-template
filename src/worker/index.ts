@@ -42,6 +42,7 @@ async function user_ops(url:string,key:string) {
 async function neonVer(db:string){
   const sql = neon(db!);
   const [result] = await sql`SELECT version()`;
+  console.log("The version of postgresql:");
   console.log(result.version);
 }
 
