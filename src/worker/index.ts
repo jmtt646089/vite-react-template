@@ -67,7 +67,11 @@ app.get("/account/", (c) => c.json({ name: "Account" }));
 app.get("/users/", (c) => {
   //user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
   //return  c.text("query users run ------------- finished ");
-  neonVer(c.env.NEON_DB);
+  //neonVer(c.env.NEON_DB);
+  const sql = neon(c.env.NEON_DB);
+  const [result] = await sql`SELECT version()`;
+  console.log("The version of postgresql:");
+  console.log(result.version);
   return c.json({ name: "neon db connected" });
   });
 
