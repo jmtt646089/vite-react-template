@@ -4,8 +4,8 @@ import { createClient } from '@supabase/supabase-js';
 import { env } from "cloudflare:workers";
 
 // Cloudflare workers settings, not bindings 
-const projectUrl = env.PROJECT_URL;
-const publishableKey = env.PUBLISHABLE_KEY;
+//const projectUrl = env.PROJECT_URL;
+//const publishableKey = env.PUBLISHABLE_KEY;
 
 
 function user_ops(url,key) {
@@ -15,20 +15,34 @@ const supabase = createClient(url, key);
 console.log("supabase client created");
 
 console.log("query users table -----------------------------------");
-await supabase.from('users').select('id, fname, lname, email');
+supabase.from('users').select('id, fname, lname, email');
 
 console.log("insert users table -----------------------------------");
-await supabase.from('users').insert([
+supabase.from('users').insert([
     { fname: 'littlewhite', lname: 'cat' },
   ]);
 
 console.log("update users table -----------------------------------");
-await supabase
+supabase
   .from('users')
   .update({ fname: 'j10noodles' })
   .eq('id', 1);
     
 }
+
+// google search results, perhaps need to comment out this first
+interface Bindings {
+  PUBLIC_URL: string;
+  PUBLILSHABLE_KEY: string;
+  
+}
+//but I think to try this first because the interface after new Hono
+interface Env{
+  PUBLIC_URL: string;
+  PUBLILSHABLE_KEY: string;
+  
+}
+
 
 const app = new Hono<{ Bindings: Env }>();
 
@@ -40,15 +54,7 @@ app.get("/productspec/", (c) => c.json({ name: "Product Details by ID" }));
 app.get("/cart/", (c) => c.json({ name: "Shopping Cart" }));
 app.get("/order/", (c) => c.json({ name: "Order" }));
 app.get("/account/", (c) => c.json({ name: "Account" }));
-app.get("/users/", user_ops(projectUrl,publishableKey));
-
-
-
-
-
-
-
-
+app.get("/users/", (c) => user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
 
 
 export default app;
