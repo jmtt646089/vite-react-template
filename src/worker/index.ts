@@ -11,14 +11,14 @@ async function user_ops(url:string,key:string) {
   console.log("supabase client created");
   //console.log(supabase);
   
-  console.log("query users table -----------------------------------");
-  const {data, error} = await supabase.from('users').select('id');
-  if (error) {
-    console.error(error);
-  } else {
-    console.log("nnd ------");
-    console.log(data); 
-  }
+  //console.log("query users table -----------------------------------");
+  //const {data, error} = await supabase.from('users').select('id');
+  //if (error) {
+  //  console.error(error);
+  //} else {
+  //  console.log("nnd ------");
+  //  console.log(data); 
+  //}
 
   
   //console.log("insert users table -----------------------------------");
@@ -32,6 +32,7 @@ async function user_ops(url:string,key:string) {
     .from('users')
     .update({ fname: 'j10noodles' })
     .eq('id', 1);
+  console.log("nnnnnnnnd after update ");
 
 }
 
