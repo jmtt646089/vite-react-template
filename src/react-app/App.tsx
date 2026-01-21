@@ -105,7 +105,7 @@ function App() {
 				<br></br>
 				<Button
 					onClick={() => {
-						fetch("/account/")
+						fetch("/users/")
 							.then((res) => res.json() as Promise<{ name: string }>)
 							.then((data) => setName(data.name));
 					}}
