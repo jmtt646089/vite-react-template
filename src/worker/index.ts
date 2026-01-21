@@ -12,7 +12,7 @@ function user_ops(url:string,key:string) {
   //console.log(supabase);
   
   console.log("query users table -----------------------------------");
-  const {data, error} = supabase.from('users').select('id, fname, lname, email');
+  const {data, error} = await supabase.from('users').select('id, fname, lname, email');
   if (error) {
     console.error(error);
   } else {
