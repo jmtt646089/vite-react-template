@@ -27,9 +27,6 @@ supabase
   .from('users')
   .update({ fname: 'j10noodles' })
   .eq('id', 1);
-
-
-return  c.text("query users run ---------------- finished ");
   
 }
 
@@ -42,8 +39,8 @@ return  c.text("query users run ---------------- finished ");
 
 //but I think to try this first because the interface after new Hono
 type Environ = {
-  PUBLIC_URL: string;
-  PUBLILSHABLE_KEY: string;
+  PROJECT_URL: string;
+  PUBLISHABLE_KEY: string;
 }
 
 const app = new Hono<{ Bindings: Environ}>();
@@ -57,7 +54,11 @@ app.get("/productspec/", (c) => c.json({ name: "Product Details by ID" }));
 app.get("/cart/", (c) => c.json({ name: "Shopping Cart" }));
 app.get("/order/", (c) => c.json({ name: "Order" }));
 app.get("/account/", (c) => c.json({ name: "Account" }));
-app.get("/users/", (c) => user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY));
+app.get("/users/", (c) => {
+                              user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
+                              return  c.text("query users run ---------------- finished ");
+                          }
+       );
 
 
 export default app;
