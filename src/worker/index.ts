@@ -27,7 +27,9 @@ supabase
   .from('users')
   .update({ fname: 'j10noodles' })
   .eq('id', 1);
-  
+
+console.log("line after update users table ---");
+console.log("line after update users table again");
 }
 
 // google search results, perhaps need to comment out this first
