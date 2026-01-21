@@ -65,9 +65,9 @@ app.get("/order/", (c) => c.json({ name: "Order" }));
 app.get("/account/", (c) => c.json({ name: "Account" }));
 app.get("/users/", (c) => {
   //user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
-  //return  c.text("query users run ---------------- finished ");
+  //return  c.text("query users run ------------- finished ");
   neonVer(c.env.NEON_DB);
-  return c.json({ name: "supabase table - users - Updated" });
+  return c.json({ name: "neon db connected" });
   });
 
 
