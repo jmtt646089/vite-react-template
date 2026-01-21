@@ -38,13 +38,13 @@ supabase
 //}
 
 //but I think to try this first because the interface after new Hono
-type Env = {
+type Environ = {
   PUBLIC_URL: string;
   PUBLILSHABLE_KEY: string;
 }
 
-
-const app = new Hono<{ Bindings: Env }>();
+const app = new Hono<{ Bindings: Environ}>();
+//const app = new Hono<{ Bindings: Env }>();
 
 app.use(logger());
 
