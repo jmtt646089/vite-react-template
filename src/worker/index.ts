@@ -27,7 +27,10 @@ supabase
   .from('users')
   .update({ fname: 'j10noodles' })
   .eq('id', 1);
-    
+
+
+return  c.json({ name: "users" })
+  
 }
 
 // google search results, perhaps need to comment out this first
