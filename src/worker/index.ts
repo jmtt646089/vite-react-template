@@ -29,7 +29,7 @@ supabase
   .eq('id', 1);
 
 
-return  c.json({ name: "users" })
+return  c.text("query users run ---------------- finished ");
   
 }
 
