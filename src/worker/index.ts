@@ -3,7 +3,7 @@ import { logger } from 'hono/logger';
 import { createClient } from '@supabase/supabase-js';
 
 
-function user_ops(url:string,key:string) {
+async function user_ops(url:string,key:string) {
   
   const supabase = createClient(url, key);
   console.log('db url is ' + url.substring(0,15));
