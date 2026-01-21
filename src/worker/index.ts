@@ -1,47 +1,34 @@
 import { Hono } from "hono";
 import { logger } from 'hono/logger';
 import { createClient } from '@supabase/supabase-js';
-//import { env } from "cloudflare:workers";
-
-// Cloudflare workers settings, not bindings 
-//const projectUrl = env.PROJECT_URL;
-//const publishableKey = env.PUBLISHABLE_KEY;
 
 
 function user_ops(url:string,key:string) {
   
-const supabase = createClient(url, key);
-console.log('db url is ' + url.substring(0,18));
-console.log('pub key is ' + key.substring(0,18));  
-console.log("supabase client created");
-console.log(supabase);
+  const supabase = createClient(url, key);
+  console.log('db url is ' + url.substring(0,15));
+  console.log('pub key is ' + key.substring(0,15));  
+  console.log("supabase client created");
+  //console.log(supabase);
+  
+  console.log("query users table -----------------------------------");
+  const {data} = supabase.from('users').select('id, fname, lname, email');
+  console.log(data);
+  
+  //console.log("insert users table -----------------------------------");
+  //supabase.from('users').insert([
+  //    { fname: 'littlewhite', lname: 'cat' },
+  //  ]);
+  
+  console.log("update users table -----------------------------------");
+  supabase
+    .from('users')
+    .update({ fname: 'j10noodles' })
+    .eq('id', 1);
 
-//console.log("query users table -----------------------------------");
-//supabase.from('users').select('id, fname, lname, email');
-
-//console.log("insert users table -----------------------------------");
-//supabase.from('users').insert([
-//    { fname: 'littlewhite', lname: 'cat' },
-//  ]);
-
-console.log("update users table -----------------------------------");
-supabase
-  .from('users')
-  .update({ fname: 'j10noodles' })
-  .eq('id', 1);
-
-//console.log("line after update users table ---");
-//console.log("line after update users table again");
 }
 
-// google search results, perhaps need to comment out this first
-//interface Bindings {
-//  PUBLIC_URL: string;
-//  PUBLILSHABLE_KEY: string;
-  
-//}
 
-//but I think to try this first because the interface after new Hono
 type Environ = {
   PROJECT_URL: string;
   PUBLISHABLE_KEY: string;
