@@ -12,7 +12,7 @@ async function user_ops(url:string,key:string) {
   //console.log(supabase);
   
   console.log("query users table -----------------------------------");
-  const {data, error} = await supabase.from('users').select();
+  const {data, error} = await supabase.from('users').select('id');
   if (error) {
     console.error(error);
   } else {
@@ -26,10 +26,11 @@ async function user_ops(url:string,key:string) {
   //    { fname: 'littlewhite', lname: 'cat' },
   //  ]);
   
+  
   console.log("update users table -----------------------------------");
   supabase
     .from('users')
-    .update({ 'fname': 'j10noodles' })
+    .update({ fname: 'j10noodles' })
     .eq('id', 1);
 
 }
