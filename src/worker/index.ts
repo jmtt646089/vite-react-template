@@ -1,14 +1,14 @@
 import { Hono } from "hono";
 import { logger } from 'hono/logger';
 import { createClient } from '@supabase/supabase-js';
-import { env } from "cloudflare:workers";
+//import { env } from "cloudflare:workers";
 
 // Cloudflare workers settings, not bindings 
 //const projectUrl = env.PROJECT_URL;
 //const publishableKey = env.PUBLISHABLE_KEY;
 
 
-function user_ops(url,key) {
+function user_ops(url:string,key:string) {
   // Create a single supabase client for interacting with your database
 const supabase = createClient(url, key);
 
@@ -31,11 +31,12 @@ supabase
 }
 
 // google search results, perhaps need to comment out this first
-interface Bindings {
-  PUBLIC_URL: string;
-  PUBLILSHABLE_KEY: string;
+//interface Bindings {
+//  PUBLIC_URL: string;
+//  PUBLILSHABLE_KEY: string;
   
-}
+//}
+
 //but I think to try this first because the interface after new Hono
 interface Env{
   PUBLIC_URL: string;
