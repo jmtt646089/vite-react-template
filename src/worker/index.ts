@@ -61,7 +61,7 @@ app.get("/account/", (c) => c.json({ name: "Account" }));
 app.get("/users/", (c) => {
                               user_ops(c.env.PROJECT_URL, c.env.PUBLISHABLE_KEY);
                               //return  c.text("query users run ---------------- finished ");
-                              return c.json({ name: "supabase table - users - Updated" }));
+                              return c.json({ name: "supabase table - users - Updated" });
                           }
        );
 
