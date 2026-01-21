@@ -9,9 +9,10 @@ import { createClient } from '@supabase/supabase-js';
 
 
 function user_ops(url:string,key:string) {
-  // Create a single supabase client for interacting with your database
+  
 const supabase = createClient(url, key);
-
+console.log('db url is ' + url.substring(0,10));
+console.log('pub key is ' + key.substring(0,12));  
 console.log("supabase client created");
 
 console.log("query users table -----------------------------------");
